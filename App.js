@@ -1,14 +1,11 @@
 import { StatusBar } from "expo-status-bar";
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  Button,
-  TouchableOpacity,
-} from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 
-export default function App() {
+const Stack = createStackNavigator();
+
+function HomeScreen({ navigation }) {
   return (
     <>
       <View
@@ -56,6 +53,7 @@ export default function App() {
       >
         <TouchableOpacity
           style={{ backgroundColor: "#E3C000", padding: 20, borderRadius: 9 }}
+          onPress={() => navigation.navigate("Bai1a")}
         >
           <Text style={{ fontSize: 20, fontWeight: "bold" }}>LOGIN</Text>
         </TouchableOpacity>
@@ -66,5 +64,90 @@ export default function App() {
         </TouchableOpacity>
       </View>
     </>
+  );
+}
+
+// Screen Bai1a
+function Bai1aScreen() {
+  return (
+    <>
+      <View
+        style={{
+          flex: 2,
+          backgroundColor: "#D1F1F6",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <Image source={require("./image/Ellipse8.png")} />
+      </View>
+      <View
+        style={{
+          flex: 1,
+          backgroundColor: "#D1F1F6",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <Text style={{ fontSize: 30, fontWeight: "bold" }}>GROW</Text>
+        <Text style={{ fontSize: 30, fontWeight: "bold" }}>YOUR BUSINESS</Text>
+      </View>
+      <View
+        style={{
+          flex: 1,
+          backgroundColor: "#D1F1F6",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <Text style={{ fontSize: 15, fontWeight: "bold" }}>
+          We will help you to grow your business using
+        </Text>
+        <Text style={{ fontSize: 15, fontWeight: "bold" }}>online server</Text>
+      </View>
+      <View
+        style={{
+          flex: 1,
+          backgroundColor: "#E5F4F5",
+          flexDirection: "row",
+          alignItems: "center",
+          justifyContent: "space-around",
+        }}
+      >
+        <TouchableOpacity
+          style={{ backgroundColor: "#E3C000", padding: 20, borderRadius: 9 }}
+          onPress={() => navigation.navigate("Bai1a")}
+        >
+          <Text style={{ fontSize: 20, fontWeight: "bold" }}>LOGIN</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={{ backgroundColor: "#E3C000", padding: 20, borderRadius: 9 }}
+        >
+          <Text style={{ fontSize: 20, fontWeight: "bold" }}>SIGN UP</Text>
+        </TouchableOpacity>
+      </View>
+      <View
+        style={{
+          flex: 1,
+          backgroundColor: "#37D6F8",
+          alignItems: "center",
+          justifyContent: "start",
+        }}
+      >
+        <Text style={{ fontSize: 25, fontWeight: "bold" }}>HOW ARE WORK?</Text>
+      </View>
+    </>
+  );
+}
+
+export default function App() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Home">
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Bai1a" component={Bai1aScreen} />
+        {/* Add other screens here */}
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
