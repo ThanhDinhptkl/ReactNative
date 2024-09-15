@@ -1,7 +1,14 @@
 import { StatusBar } from "expo-status-bar";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  TouchableOpacity,
+  TextInput,
+} from "react-native";
 
 const Stack = createStackNavigator();
 
@@ -68,7 +75,7 @@ function HomeScreen({ navigation }) {
 }
 
 // Screen Bai1a
-function Bai1aScreen() {
+function Bai1aScreen({ navigation }) {
   return (
     <>
       <View
@@ -116,7 +123,7 @@ function Bai1aScreen() {
       >
         <TouchableOpacity
           style={{ backgroundColor: "#E3C000", padding: 20, borderRadius: 9 }}
-          onPress={() => navigation.navigate("Bai1a")}
+          onPress={() => navigation.navigate("Bai1b")}
         >
           <Text style={{ fontSize: 20, fontWeight: "bold" }}>LOGIN</Text>
         </TouchableOpacity>
@@ -131,11 +138,118 @@ function Bai1aScreen() {
           flex: 1,
           backgroundColor: "#37D6F8",
           alignItems: "center",
-          justifyContent: "start",
+          justifyContent: "flex-start",
         }}
       >
-        <Text style={{ fontSize: 25, fontWeight: "bold" }}>HOW ARE WORK?</Text>
+        <Text style={{ fontSize: 25, fontWeight: "bold" }}>HOW WE WORK?</Text>
       </View>
+    </>
+  );
+}
+
+// Screen Bai1b
+function Bai1bScreen({ navigation }) {
+  return (
+    <>
+      <View
+        style={{
+          flex: 2,
+          backgroundColor: "#D1F1F6",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <Image source={require("./image/Group.png")} />
+      </View>
+      <View
+        style={{
+          flex: 1,
+          backgroundColor: "#D1F1F6",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <Text style={{ fontSize: 30, fontWeight: "bold" }}>FORGOT</Text>
+        <Text style={{ fontSize: 30, fontWeight: "bold" }}>PASSWORD</Text>
+      </View>
+      <View
+        style={{
+          flex: 1,
+          backgroundColor: "#D1F1F6",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <Text style={{ fontSize: 15, fontWeight: "bold" }}>
+          Provide your account’s email for which you
+        </Text>
+        <Text style={{ fontSize: 15, fontWeight: "bold" }}>
+          want to reset your password
+        </Text>
+      </View>
+      <View
+        style={{
+          flex: 2,
+          backgroundColor: "#D1F1F6",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <View
+          style={{
+            flexDirection: "row",
+            alignItems: "center",
+            backgroundColor: "#C4C4C4",
+            borderRadius: 5,
+            borderWidth: 1,
+            borderColor: "#C4C4C4",
+            width: 300,
+            paddingLeft: 10,
+          }}
+        >
+          <Image
+            source={require("./image/mail-2935365 1.png")}
+            style={{ width: 50, height: 50, marginRight: 10 }}
+          />
+          <TextInput
+            style={{
+              height: 40,
+              flex: 1,
+            }}
+            placeholder="Email"
+          />
+        </View>
+      </View>
+      <View
+        style={{
+          flex: 1,
+          backgroundColor: "#E5F4F5",
+          flexDirection: "row",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <TouchableOpacity
+          style={{
+            backgroundColor: "#E3C000",
+            padding: 20,
+            borderRadius: 9,
+            width: 300,
+            alignItems: "center",
+          }}
+          onPress={() => navigation.navigate("Bai1b")}
+        >
+          <Text style={{ fontSize: 20, fontWeight: "bold" }}>NEXT</Text>
+        </TouchableOpacity>
+      </View>
+      <View
+        style={{
+          flex: 1,
+          backgroundColor: "#37D6F8",
+          alignItems: "center",
+          justifyContent: "flex-start",
+        }}
+      ></View>
     </>
   );
 }
@@ -146,7 +260,7 @@ export default function App() {
       <Stack.Navigator initialRouteName="Home">
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Bai1a" component={Bai1aScreen} />
-        {/* Add other screens here */}
+        <Stack.Screen name="Bai1b" component={Bai1bScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
